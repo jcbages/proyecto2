@@ -9,7 +9,7 @@ html(lang='en')
     script(src='https://use.fontawesome.com/5f7ca492d4.js')
   body
     .container
-      h1 Contact List App
+      h1 Bookstore App
       table.table
         thead
           tr
@@ -19,7 +19,7 @@ html(lang='en')
             th Action
             th  
         tbody
-          form(action='/add', method='post')
+          form(action='/add', method='post' id="addForm")
             tr
               td
                 input#name.form-control(type='text', name='name')
@@ -62,11 +62,12 @@ html(lang='en')
                               .media-body
                                 span.media-meta.pull-right=val.number
                                 h4.title= val.name
-                                  span.pull-right.pagado (Pagado)
                                 p.summary= val.email
+                                  span.pull-right.pagado (Pagado)
+
                           td
                             .pull-right.action-buttons
-                              a(id="update")
+                              a( href="/update/"+val._id)
                                 span.fa.fa-pencil
                               a.trash(id="delete-"+val._id, class="delete")
                                 span.fa.fa-trash

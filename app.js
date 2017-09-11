@@ -49,10 +49,9 @@ app.post("/add", function(req, res){
 
   MongoClient.connect(url,function(err,db){
     if( err) throw err;
-    db.collection("personas").insertOne(item,function(err){
-      if(err) throw err;
+    db.collection("personas").insertOne(item).then(function(){
+      res.sendStatus(200);
       db.close();
-      res.sendView("views/index.pug");
     });
   });
 });
@@ -62,21 +61,45 @@ app.get("/add", function(req, res){
     if( err) throw err;
     db.collection("personas").find({}).toArray(function(error, documents) {
       if (err) throw error;
-
       res.send(documents);
     });
   });
 });
+
 app.delete("/delete/:id", function (req, res) {
   var id = req.params.id;
   console.log(id);
   MongoClient.connect(url,function(err,db){
     if( err) throw err;
-    db.collection("personas").remove({"_id" : ObjectId(id)});
-    db.close();
-    res.sendView("views/index.pug");
-  });
+    db.collection("personas").remove({"_id" : ObjectId(id)}).then(function(){
+      res.sendStatus(200);
+      db.close();
 
+    });
+  });
+});
+app.get("/update/:id",function(req,res){
+  var id = req.params.id;
+  MongoClient.connect(url,function(err,db){
+    if( err) throw err;
+    db.collection("personas").findOne({"_id" : ObjectId(id)}).then(function(pers){
+      res.render("updatePersona",{persona:pers});
+      db.close();
+    });
+  });
+});
+app.put("/update/:id",function(req,res){
+  var id = req.params.id;
+  var name = req.body.pname;
+  var email = req.body.pEmail;
+  var number = req.body.pNumber;
+  MongoClient.connect(url,function(err,db){
+    if( err) throw err;
+    db.collection("personas").update({"_id" : ObjectId(id)},{name:name, email:email,number:number},{ upsert: true }).then(function(){
+      res.sendStatus(200);
+      db.close();
+    });
+  });  
 });
 
 app.listen(8000);
