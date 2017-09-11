@@ -24,6 +24,7 @@
   "homepage": "https://github.com/carlox18/proyecto2#readme",
   "dependencies": {
     "body-parser": "^1.18.0",
+    "bootstrap": "^3.3.7",
     "express": "^4.15.4",
     "mongo": "^0.1.0",
     "pug": "^2.0.0-rc.4",

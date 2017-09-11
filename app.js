@@ -3,6 +3,7 @@ var favicon = require("serve-favicon");
 
 var express = require("express");
 var bodyParser = require("body-parser");
+var ObjectId = mongo.ObjectID;
 
 var app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -16,6 +17,7 @@ app.set("/views","./views");
 app.set("view engine", "pug");
 
 app.use(favicon(__dirname + "/public/" + "favicon.ico"));
+
 
 function sendViewMiddleware(req, res, next) {
   res.sendView = function(view) {
@@ -46,11 +48,11 @@ app.post("/add", function(req, res){
   };
 
   MongoClient.connect(url,function(err,db){
-    if(err) throw err;
+    if( err) throw err;
     db.collection("personas").insertOne(item,function(err){
       if(err) throw err;
-      res.sendView("views/index.pug");
       db.close();
+      res.sendView("views/index.pug");
     });
   });
 });
@@ -64,6 +66,17 @@ app.get("/add", function(req, res){
       res.send(documents);
     });
   });
+});
+app.delete("/delete/:id", function (req, res) {
+  var id = req.params.id;
+  console.log(id);
+  MongoClient.connect(url,function(err,db){
+    if( err) throw err;
+    db.collection("personas").remove({"_id" : ObjectId(id)});
+    db.close();
+    res.sendView("views/index.pug");
+  });
+
 });
 
 app.listen(8000);
