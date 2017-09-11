@@ -50,7 +50,7 @@ $(document).ready( function () {
       $(".table-filter tr").css("display", "none");
       $(".table-filter tr[data-status='" + $target + "']").fadeIn("slow");
     } else {
-      $(".table tr-filter").css("display", "none").fadeIn("slow");
+      $(".table-filter tr").css("display","none").fadeIn("slow");
     }
   });
 

@@ -156,6 +156,9 @@
 .action-buttons{
 	font-size:25px;
 }
+.fa-trash:hover{
+	color:rgb(189,81,71);
+}
 .update{
 	float:left;
 
