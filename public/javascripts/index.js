@@ -1,5 +1,6 @@
 $(document).ready( function () {
   $("#addForm").submit( function () {
+    console.log("yeeeboi");
     var formdata = $(this).serialize();
     $("#addForm").trigger("reset");
     $.ajax({
