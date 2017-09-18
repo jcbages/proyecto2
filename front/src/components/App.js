@@ -11,43 +11,28 @@ class App extends React.Component {
 	constructor(props){
 		super(props);
 		this.state={
+			welcomePage:[],
 			loginPage:[],
-			homePage:HomePage
+			homePage:[]
 		}
 	}
 	componentWillMount(){
-		var loginPage =[];
-		loginPage.push(<LoginScreen appContext={this}/>);
-		this.setState({
-			loginPage:loginPage
-		})
-	}
+    var welcomePage =[];
+    welcomePage.push(<Welcome appContext={this}/>);
+    this.setState({
+                  welcomePage:welcomePage
+                    })
+  }
 
 	render() {
-
-		if(this.state.homePage.length === 0){
 			return (<div>
-				<style dangerouslySetInnerHTML={{__html: `
-						.configAccount { display: none; }
-						.account{display:block}
-						.bm-burger-button{display:none;}
-					`}}></style>
-				<Header />
-				<Main parentContext={this} homePage={Welcome}/>
+			<Main/>
+				<Header appContext={this} />
+				{this.state.welcomePage}
+				{this.state.loginPage}
+				{this.state.homePage}
 				</div>
 				)
 		}
-		else{
-			return(
-				<div>
-				<style dangerouslySetInnerHTML={{__html: `
-						.configAccount{display:block}
-					`}}></style>
-					<Header />
-					<Main homePage={HomePage}/>
-					</div>
-					);
-		}
-	}
 }
 export default App;

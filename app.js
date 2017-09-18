@@ -18,7 +18,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 //Loading of routers
-app.use(express.static(path.join(__dirname,"front/build")));
+app.use(express.static(path.join(__dirname,"/front/build")));
 var routerUser = require("./server/routes/user.js"),
   routerClub   = require("./server/routes/club.js");
 

@@ -7,13 +7,13 @@ class HomePage extends React.Component {
 	constructor(props){
 		super(props);
 		this.state={
-			loginPage:[],
-			homePage:[]
+			mainPage:[],
+			clubPage:[]
 		}
 	}
 
 	render() {
-		return(<div>
+		return(<div>Bienvenido!
     </div>	
     )	
 		}

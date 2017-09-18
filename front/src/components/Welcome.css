@@ -274,3 +274,16 @@ p {
         pointer-events: all;
 }
 
+.account{
+    display:block;
+}
+.configAccount{
+    display:none;
+}
+
+.loginscreen{
+    text-align:center;
+    width: 50%;
+    margin: auto;
+    background-color: grey
+}

@@ -4,9 +4,10 @@ import RaisedButton from 'material-ui/RaisedButton';
 import Login from '../components/Login';
 import Register from '../components/Register';
 import App from "../components/App";
-class Loginscreen extends Component {
+class LoginScreen extends Component {
   constructor(props){
     super(props);
+
     this.state={
       username:'',
       password:'',
@@ -17,8 +18,9 @@ class Loginscreen extends Component {
     }
   }
   componentWillMount(){
+    this.props.appContext.setState({welcomePage:[]});
     var loginscreen=[];
-    loginscreen.push(<Login parentContext={this} appContext={this.props.parentContext}/>);
+    loginscreen.push(<Login parentContext={this} appContext={this.props.appContext}/>);
     var loginmessage = "Not registered yet? Register Now";
     this.setState({
       loginscreen:loginscreen,
@@ -45,7 +47,7 @@ class Loginscreen extends Component {
     var loginmessage;
     if(this.state.isLogin){
       var loginscreen=[];
-      loginscreen.push(<Register parentContext={this}/>);
+      loginscreen.push(<Register appContext = {this.props.appContext} parentContext={this}/>);
       loginmessage = "Already registered? Go to Login";
       this.setState({
        loginscreen:loginscreen,
@@ -56,7 +58,7 @@ class Loginscreen extends Component {
     }
     else{
        loginscreen=[];
-      loginscreen.push(<Login parentContext={this}/>);
+      loginscreen.push(<Login appContext = {this.props.appContext} parentContext={this}/>);
       loginmessage = "Not Registered yet, Go to registration";
       this.setState({
        loginscreen:loginscreen,
@@ -70,4 +72,4 @@ class Loginscreen extends Component {
 const style = {
   margin: 15,
 };
-export default Loginscreen;
+export default LoginScreen;
