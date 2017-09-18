@@ -29,6 +29,20 @@ router.put("/:id", function(req, res){
     res.status(200).json(updatedUser);
   });
 });
+router.post("/login", function(req, res){
+  User.findByEmail(req.body.email,function(err,user){
+    if(err){
+      return res.status(400).json({error:err});
+    }
+    User.findByPass(req.body.password,function(err,userMail){
+      if(err){
+        return res.status(204).json({error:err});
+      }
+      console.log("encontro pass" + userMail)
+      res.status(200).json(userMail);
+    })
+  });
+});
 
 router.get("/:id", function(req, res){
   User.findById(req.params.id, function(err, user){

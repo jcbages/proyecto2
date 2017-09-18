@@ -46,6 +46,18 @@ User.findByClub = function(id_club, callback){
     callback(err, users);
   });
 };
+User.findByName = function(name, callback){
+  var users = db.get().collection("users");
+  users.findOne({name:name}, function(err, user){
+    callback(err, user);
+  });
+};
+User.findByPass = function(password, callback){
+  var users = db.get().collection("users");
+  users.findOne({password:password}, function(err, user){
+    callback(err, user);
+  });
+};
 
 User.create = function(user, callback){
   var users = db.get().collection("users");

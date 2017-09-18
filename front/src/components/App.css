@@ -1,6 +1,12 @@
 .App {
   text-align: center;
 }
+.account{
+  float:right;
+}
+.configAccount{
+  float:right;
+}
 
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
@@ -33,14 +39,10 @@ a.active {
     color: orange;
 }
 
-nav {
-    padding-top: 20px;
-    padding-bottom: 20px;
-}
 
 /* Position and sizing of burger button */
 .bm-burger-button {
-  position: absolute;
+  position: fixed;
   width: 36px;
   height: 30px;
   left: 36px;
@@ -78,18 +80,14 @@ nav {
 /* Wrapper for item list */
 .bm-item-list {
   color: #b8b7ad;
-  padding: 1.6em;
+  padding: 0.8em;
 }
 
 /* Styling of overlay */
 .bm-overlay {
   background: rgba(0, 0, 0, 0.3);
 }
-.bm-menu-wrap {
-  bottom: 0;
-  left: 0;
-}
-
 .navbar-brand a{
 text-decoration: none;
 }
+

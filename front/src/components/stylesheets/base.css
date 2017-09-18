@@ -1,0 +1,146 @@
+
+
+*, *:before, *:after { box-sizing: border-box; }
+
+html, body, input, button, select, option {
+  color: $darkgray;
+  font-family: "museo-sans-rounded", sans-serif;
+
+}
+
+html, body, #render-target {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+
+.app {
+  display: flex;
+  min-height: 100%;
+  flex-direction: column;
+}
+
+#main-content {
+  flex: 1;
+  padding-bottom: 60px;
+}
+
+.card {
+  background: $white;
+  border-radius: 3px;
+  box-shadow: 1px 1px 1px rgba(0,0,0,0.2);
+}
+
+.abs-left {
+  position: absolute;
+  left: 0;
+}
+.abs-right {
+  position: absolute;
+  right: 0;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+ul {
+  padding: 0;
+}
+
+.Dropdown {
+  position: absolute;
+  z-index: 3;
+  background: #FFF;
+  width: 100%;
+  border: 2px solid $fuscia;
+  border-radius: 3px;
+  padding: 0 4px;
+  line-height: 34px;
+  font-size: 13px;
+  cursor: pointer;
+}
+.Dropdown .placeholder {
+  padding: 0 4px;
+}
+
+.Dropdpown .Dropdown-option .placeholder {
+  border-bottom: 1px solid $lightgray;
+  padding: 0 4px;
+}
+
+
+.Dropdown .Dropdown-arrow {
+  position: absolute;
+  top: 0;
+  right: 8px;
+  font-family: 'FontAwesome';
+}
+.Dropdown .Dropdown-arrow:before {
+  content: "\f107";
+}
+
+.row {
+  display: flex;
+}
+
+.col {
+  flex: 1;
+}
+
+#shuffle .list-item.list {
+    display: block;
+}
+#shuffle .list-item {
+    position: relative;
+    margin: 0 6px 6px;
+    padding: 10px;
+    list-style-type: none;
+}
+#shuffle .list-item {
+    position: relative;
+    margin: 0 6px 6px;
+    padding: 10px;
+    list-style-type: none;
+}
+#shuffle .list-item .robot-mug {
+    display: inline-block;
+    width: 205px;
+}
+#shuffle .list-item .robot-name {
+    font-weight: 700;
+    color: #2e5794;
+    clear: both;
+}
+#shuffle .list-item .robot-info, #shuffle .list-item .robot-other {
+    display: inline-block;
+    width: 210px;
+    vertical-align: top;
+    padding: 5px 5px 0 10px;
+}
+#shuffle{
+    position: relative;
+    width: 90%;
+    max-width: 800px;
+    margin: auto;
+}
+.button-toggle {
+    position: relative;
+    display: inline-block;
+    border: 0;
+    border-radius: 6px;
+    border-bottom: 3px solid rgba(0,0,0,.3);
+    background: #154996;
+    color: #fff;
+    margin: 0 5px;
+    padding: 8px 20px 8px 43px;
+    font-size: 12px;
+    outline: none;
+    text-decoration: none;
+}
