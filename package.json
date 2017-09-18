@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "cross-env NODE_ENV=production MONGO_URL=mongodb://carlox18:carlox1801@ds129004.mlab.com:29004/trocalez node ./bin/www",
+    "start": "cross-env node ./bin/www",
     "build":"node build"
   },
   "repository": {
