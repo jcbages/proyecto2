@@ -21,6 +21,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 //Loading of routers
 var routerUser = require("./server/routes/user.js"),
   routerClub   = require("./server/routes/club.js");
+app.use(express.static(path.join(__dirname,"front/build")));
 
 app.use("/users", routerUser);
 app.use("/clubs", routerClub);
