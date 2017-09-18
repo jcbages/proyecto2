@@ -14,7 +14,18 @@ Club represents the database methods for accesing the clubs collections.
     text,
     time
   }],
-  members: [users: ObjectID]
+  members: [users: ObjectID],
+  messages: [mesages]
+}
+*/
+
+/*
+Object that represents the messages in a group or club board
+{
+  sender_name,
+  sender: user:ObjectID,
+  text,
+  timestamp: Date
 }
 */
 
@@ -36,7 +47,7 @@ Club.create = function(club, callback){
 
 Club.update = function(id, changedClubFields, callback){
   var clubs = db.get().collection("clubs");
-  clubs.findOneAndUpdate({_id:ObjectId(id)}, {$set:changedClubFields},{returnOriginal:false}, function(err, updatedClub){
+  clubs.findOneAndUpdate({_id:id}, {$set:changedClubFields},{returnOriginal:false}, function(err, updatedClub){
     callback(err, updatedClub.value);
   });
 };

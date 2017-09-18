@@ -5,11 +5,22 @@ var db = require("./db.js"),
 User represents the database methods for accesing the users collections.
 {
   _id,
-  nombre,
+  name,
   email,
   password,
   bio,
-  clubs: [clubs: ObjectID]
+  clubs: [clubs: ObjectID],
+  messages: [mesages]
+}
+*/
+
+/*
+Object that represents the messages in a group or club board
+{
+  sender_name,
+  sender: user:ObjectID,
+  text,
+  timestamp: Date (Decided at server side)
 }
 */
 
@@ -45,7 +56,7 @@ User.create = function(user, callback){
 
 User.update = function(id, changedUserFields, callback){
   var users = db.get().collection("users");
-  users.findOneAndUpdate({_id:ObjectId(id)}, {$set:changedUserFields},{returnOriginal:false}, function(err, updatedUser){
+  users.findOneAndUpdate({_id:id}, {$set:changedUserFields},{returnOriginal:false}, function(err, updatedUser){
     callback(err, updatedUser.value);
   });
 };
