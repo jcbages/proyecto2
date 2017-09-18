@@ -52,6 +52,7 @@ router.get("/keywords",function(req, res){
 router.get("/", function(req, res){
   Club.find(function(err, users){
     if(err) return res.status(400).json(err);
+    console.log(users);
     res.status(200).json(users);
   });
 });

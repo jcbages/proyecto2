@@ -11,16 +11,15 @@ class App extends React.Component {
 	constructor(props){
 		super(props);
 		this.state={
-			welcomePage:[],
+			mainPage:[],
 			loginPage:[],
-			homePage:[]
 		}
 	}
 	componentWillMount(){
     var welcomePage =[];
     welcomePage.push(<Welcome appContext={this}/>);
     this.setState({
-                  welcomePage:welcomePage
+                  mainPage:welcomePage
                     })
   }
 
@@ -28,9 +27,8 @@ class App extends React.Component {
 			return (<div>
 			<Main/>
 				<Header appContext={this} />
-				{this.state.welcomePage}
+				{this.state.mainPage}
 				{this.state.loginPage}
-				{this.state.homePage}
 				</div>
 				)
 		}

@@ -33,11 +33,11 @@ class Hero extends React.Component{
             <div id="hero" className="Hero" style={{backgroundImage: 'url(https://itbok.files.wordpress.com/2011/03/shutterstock_20850556_resize.jpg)'}}>
                 <div className="content">
                     <h1> Tu Club de lectura virtual</h1>
-                    <h2>Season 2 now available</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque id quam sapiente unde voluptatum alias vero debitis, magnam quis quod.</p>
+                    <h2>Para el ávido lector</h2>
+                    <p>Crea, maneja y participa en los mejores clubes de lectura virtuales!.</p>
                     <div className="button-wrapper">
-                        <HeroButton primary={true} text="Watch now" />
-                        <HeroButton primary={false} text="+ My list" />
+                        <HeroButton primary={true} text="Registrarse" />
+                        <HeroButton primary={false} text="+ Login" />
                     </div>
                 </div>
                 <div className="overlay"></div>

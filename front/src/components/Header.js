@@ -3,6 +3,8 @@ import { Link, Switch, Route } from 'react-router-dom';
 import { Navbar, Nav, NavItem, MenuItem, Dropdown, Glyphicon} from "react-bootstrap";
 import { slide as Menu } from 'react-burger-menu';
 import LoginScreen from "../containers/LoginScreen";
+import Clubs from "./Clubs";
+import HomePage from "./HomePage";
 
 // The Header creates links that can be used to navigate
 // between routes.
@@ -52,46 +54,74 @@ class Account extends React.Component{
       );
   }
 };
-class NavbarInstance extends React.Component {
-	render() {
-		return (
-			<Navbar>
-			<Navbar.Header>
-			<Navbar.Brand>
 
-			<Menu>
-			<a id="home" className="menu-item" href="/">Home</a>
-			<a id="clubs" className="menu-item" href="/clubs">Mis clubes de lectura</a>
-			<a id="contact" className="menu-item" href="/contact">Contact</a>
-			<a onClick={ this.showSettings } className="menu-item--small" href="">Settings</a>
-			</Menu>
-			<Link to="/">Club Virtual</Link>
-			</Navbar.Brand>
-			</Navbar.Header>
-			<Nav className="account">
-      <NavItem onClick={(event) => this.handleClick(event)}>Login/SignUp</NavItem>
-      <MenuItem divider />
-      </Nav>
-      <Account></Account>
-      </Navbar>
-      );
-
-	}
-   handleClick(event){
-    var login=[];
-    login.push(<LoginScreen appContext ={this.props.appContext}/>);
-    this.props.appContext.setState({mainPage:[],loginPage:login});
-   }
-
-}
 
 class Header extends React.Component {
-	render() {
-		return (
-			<NavbarInstance appContext ={this.props.appContext}></NavbarInstance>
-
-			);
-	}
+  constructor(props){
+    super(props);
+  }
+  render() {
+    var styleLogin={
+      display:"none"
+    }
+    if(this.props.appContext.state.mainPage[0] != null && this.props.appContext.state.mainPage[0].type.name =="Welcome"){
+      styleLogin={
+        display:"block"
+      }
+    }
+    var style={
+      display:"none"
+    }
+    if(this.props.appContext.state.mainPage[0]!= null){
+      if(this.props.appContext.state.mainPage[0].type.name == "Welcome"){
+        style = {
+          display:"none"
+        }
+      }
+      else {
+        style={
+          display:"block"
+        }
+      }
+    }
+    return (
+      <Navbar>
+      <Navbar.Header style={style}>
+      <Navbar.Brand>
+      <Menu>
+      <a id="home" className="menu-item" href="#" onClick={(event) => this.handleClickHome(event)}>Home</a>
+      <a href="#" onClick={(event) => this.handleClick2(event)}>Mis clubes de lectura</a>
+      <a id="contact" className="menu-item" href="/contact">Contact</a>
+      <a onClick={ this.showSettings } className="menu-item--small" href="">Settings</a>
+      </Menu>
+      <Link to="/">Club Virtual</Link>
+      </Navbar.Brand>
+      </Navbar.Header>
+      <Nav className="account">
+      <NavItem style={styleLogin} onClick={(event) => this.handleClick(event)}>Login/SignUp</NavItem>
+      <MenuItem divider />
+      </Nav>
+      <div style = {style}>
+      <Account></Account>
+      </div>
+      </Navbar>
+      );
+  }
+  handleClick(event){
+    var login=[];
+    login.push(<LoginScreen appContext ={this.props.appContext} />);
+    this.props.appContext.setState({mainPage:[],loginPage:login});
+  }
+  handleClick2(event){
+    var clubs=[];
+    clubs.push(<Clubs appContext ={this.props.appContext} />);
+    this.props.appContext.setState({mainPage:clubs,loginPage:[]});
+  }
+  handleClickHome(event){
+    var home=[];
+    home.push(<HomePage appContext ={this.props.appContext}/>);
+    this.props.appContext.setState({mainPage:home, loginPage:[]});
+  }
 }
 
 export default Header

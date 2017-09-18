@@ -42,12 +42,18 @@ nav {
 }
 
 /* Position and sizing of burger button */
-.bm-burger-button {
+.bm-burger-button  {
   position: absolute;
   width: 36px;
   height: 30px;
   left: 36px;
   top: 36px;
+}
+.welcome{
+  display:none;
+}
+.homepage{
+  display:block;
 }
 
 /* Color/shape of burger icon bars */
@@ -95,9 +101,6 @@ nav {
 
 .navbar-brand a{
   text-decoration: none;
-}
-.bm-burger-button{
-  display:block;
 }
 
 @import url(http://fonts.googleapis.com/css?family=Raleway:400,700,800);

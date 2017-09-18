@@ -65,7 +65,7 @@ class Clubs extends React.Component {
     }
 
     getData() {
-      const url = `/clubs`;
+      const url = "/clubs";
 
       this.serverRequest = query.getData(url, (clubsData) => {
         this.setState({ robotMasters: clubsData });
