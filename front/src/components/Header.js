@@ -1,18 +1,16 @@
 import React from 'react';
-import { Link, Switch, Route } from 'react-router-dom';
-import { Navbar, Nav, NavItem, NavDropdown, MenuItem, DropdownButton, Dropdown, Glyphicon} from "react-bootstrap";
+import { Link, Switch } from 'react-router-dom';
+import { Navbar, Nav, NavItem, MenuItem, Dropdown, Glyphicon} from "react-bootstrap";
 import { slide as Menu } from 'react-burger-menu';
-import HomePage from "./HomePage";
-import Clubs from "./Clubs";
 
 // The Header creates links that can be used to navigate
 // between routes.
 
-var Account = React.createClass({
-  render: function() {
+class Account extends React.Component{
+  render() {
     return (
       <ul className="configAccount">
- 		       <Dropdown  >
+ 		       <Dropdown id="drop">
             <Dropdown.Toggle>
               <Glyphicon glyph="user" />
               
@@ -52,7 +50,7 @@ var Account = React.createClass({
       </ul>
     );
   }
-});
+};
 class NavbarInstance extends React.Component {
 	render() {
 		return (
@@ -70,11 +68,9 @@ class NavbarInstance extends React.Component {
 			</Navbar.Brand>
 			</Navbar.Header>
 			<Nav className="account">
-			<NavItem ><Link to="/logscreen">Sign Up / Login</Link></NavItem>
+      <NavItem href="/logscreen">Apps</NavItem>
 			<MenuItem divider />
-      <Switch>
-      <Route exact path='/' component={HomePage}/>
-      <Route path='/clubs' component={Clubs}/>
+      <Switch>>
     </Switch>
 			</Nav>
             <Account></Account>

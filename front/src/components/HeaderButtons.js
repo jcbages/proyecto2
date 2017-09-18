@@ -1,4 +1,6 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from "prop-types";
+
 import ListButton from './Buttons/ListButton.jsx';
 import SortButton from './Buttons/SortButton.jsx';
 import ShuffleButton from './Buttons/ShuffleButton.jsx';

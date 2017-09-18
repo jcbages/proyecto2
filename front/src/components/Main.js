@@ -10,9 +10,6 @@ import Clubs from "./Clubs";
 // with /roster or /schedule. The / route will only match
 // when the pathname is exactly the string "/"
 class Main extends React.Component {
-constructor(props){
-		super(props);
-		}
 		componentWillMount(){
 		this.setState({
 		})

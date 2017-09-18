@@ -8,9 +8,9 @@ import './Welcome.css';
 /////////////////
 
 // Container
-var Welcome = React.createClass({
+class Welcome extends React.Component{
     
-    render: function() {
+    render() {
         
     
         
@@ -20,15 +20,15 @@ var Welcome = React.createClass({
             </div>
         );
     }
-});
+};
 
 
 //////////
 // Hero //
 //////////
 
-var Hero = React.createClass({
-    render: function() {
+class Hero extends React.Component{
+    render() {
         return (
             <div id="hero" className="Hero" style={{backgroundImage: 'url(https://itbok.files.wordpress.com/2011/03/shutterstock_20850556_resize.jpg)'}}>
                 <div className="content">
@@ -44,16 +44,16 @@ var Hero = React.createClass({
             </div>
         );
     }
-})
+}
 
 // Hero Button
-var HeroButton = React.createClass({
-    render: function() {
+class HeroButton extends React.Component{
+    render() {
         return (
-            <a href="#" className="Button" data-primary={this.props.primary}>{this.props.text}</a>
+            <a className="Button" data-primary={this.props.primary}>{this.props.text}</a>
         );
     }
-})
+}
 
 
 

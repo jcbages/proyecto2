@@ -18,9 +18,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 //Loading of routers
+app.use(express.static(path.join(__dirname,"front/build")));
 var routerUser = require("./server/routes/user.js"),
   routerClub   = require("./server/routes/club.js");
-app.use(express.static(path.join(__dirname,"front/build")));
 
 app.use("/users", routerUser);
 app.use("/clubs", routerClub);
@@ -43,6 +43,8 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
-
+app.get("/",function(req,res){
+  res.sendFile("/index.html");
+})
 module.exports = app;
 

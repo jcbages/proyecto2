@@ -1,6 +1,4 @@
-import React, { PropTypes} from 'react';
-import ReactDOM from 'react-dom';
-import Dropdown from 'react-dropdown';
+import React from 'react';
 import FlipMove from 'react-flip-move';
 import {shuffle} from 'lodash';
 import './stylesheets/base.css';
@@ -20,7 +18,6 @@ class Clubs extends React.Component {
         robotMasters: [],
         view: 'list',
         order: 'asc',
-        selectedSeries: '2',
         sortingMethod: 'chronological',
         enterLeaveAnimation: 'accordianHorizontal',
         inProgress: false,
@@ -30,7 +27,6 @@ class Clubs extends React.Component {
       this.toggleSort  = this.toggleSort.bind(this);
       this.toggleList  = this.toggleList.bind(this);
       this.refresh     = this.refresh.bind(this);
-      this.selectSeries = this.selectSeries.bind(this);
     }
 
     toggleSort() {
@@ -69,7 +65,7 @@ class Clubs extends React.Component {
     }
 
     getData() {
-      const url = `http://localhost:3001/clubs`;
+      const url = `/clubs`;
 
       this.serverRequest = query.getData(url, (clubsData) => {
         this.setState({ robotMasters: clubsData });
@@ -77,7 +73,7 @@ class Clubs extends React.Component {
     }
 
     componentWillUnmount() {
-    	if(!this.serverRequest&&this.serverRequest != undefined){
+    	if(!this.serverRequest&&this.serverRequest !== undefined){
       this.serverRequest.abort();
   }
     }
@@ -129,7 +125,7 @@ class Clubs extends React.Component {
     }
 
     render() {
-      const { view, order, sortingMethod, selectedSeries, series } = this.state;
+      const { view, order, sortingMethod, series } = this.state;
       return (
         <div id="shuffle" className={view}>
           <HeaderButtons

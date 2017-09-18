@@ -24,10 +24,8 @@ class App extends React.Component {
 	}
 
 	render() {
-		var divStyle = {
-			color: 'white',
-		};
-		if(this.state.homePage.length == 0){
+
+		if(this.state.homePage.length === 0){
 			return (<div>
 				<style dangerouslySetInnerHTML={{__html: `
 						.configAccount { display: none; }
