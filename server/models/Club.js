@@ -1,3 +1,4 @@
+// podrian usar mongoose para no "reinventar la rueda" :)
 "use strict";
 var db = require("./db.js"),
   ObjectId = require("mongodb").ObjectID;
