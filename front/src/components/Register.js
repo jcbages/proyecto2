@@ -74,6 +74,9 @@ class Register extends Component {
        homePage.push(<HomePage/>);
        self.props.appContext.setState({loginPage:[],mainPage:homePage,userId:response.data.data._id});
      }
+     else{
+      window.alert("Error signing up");
+     }
    })
     .catch(function (error) {
      console.log(error);

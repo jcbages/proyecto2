@@ -33,10 +33,12 @@ router.post("/login", function(req, res){
   User.findByEmail(req.body.email,function(err,user){
     if(err){
       return res.status(400).json({error:err});
+      if(!user) return res.status(206).json({message:"That user doesn't exist"}).end();
     }
     User.findByPass(req.body.password,function(err,userMail){
       if(err){
-        return res.status(204).json({error:err});
+        return res.status(400).json({error:err});
+        if(!sender) return res.status(204).json({message:"Wrong Password"}).end();
       }
       console.log("encontro pass" + userMail)
       res.status(200).json(userMail);

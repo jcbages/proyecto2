@@ -32,7 +32,7 @@ class Hero extends React.Component{
         return (
             <div id="hero" className="Hero" style={{backgroundImage: 'url(https://itbok.files.wordpress.com/2011/03/shutterstock_20850556_resize.jpg)'}}>
                 <div className="content">
-                    <h1> Tu Club de lectura virtual</h1>
+                    <h1> Tu Club de Lectura Virtual</h1>
                     <h2>Para el ávido lector</h2>
                     <p>Crea, maneja y participa en los mejores clubes de lectura virtuales!.</p>
                     <div className="button-wrapper">

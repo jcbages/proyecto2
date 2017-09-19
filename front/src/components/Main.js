@@ -17,7 +17,6 @@ class Main extends React.Component {
 		render() {
 			return (
     <Switch>
-      <Route exact path='/' component={this.props.mainPage}/>
       <Route path='/logscreen' component={LoginScreen} parentContext={this.props.parentContext} appContext={this.props.appContext}/>
     </Switch>
 )

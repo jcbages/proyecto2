@@ -50,18 +50,18 @@ class Login extends React.Component {
    .then(function (response) {
     console.log(response)
     if(response.status == 200){
-     window.alert("Login successfull");
+     window.alert("Login successful");
      var homePage=[];
      homePage.push(<HomePage/>);
-     self.props.appContext.setState({loginPage:[],mainPage:homePage,userId:response.data.data._id});
+     self.props.appContext.setState({loginPage:[],mainPage:homePage,userId:response.data._id});
    }
    else if(response.status == 204){
      console.log("Username password do not match");
-     alert("username password do not match")
+     window.alert("username password do not match")
    }
    else{
      console.log("Username does not exist");
-     alert("Username does not exist");
+     window.alert("Username does not exist");
    }
  })
    .catch(function (error) {

@@ -89,7 +89,7 @@ class Header extends React.Component {
       </Menu>
       </Navbar.Brand>
       </Navbar.Header>
-      <Link to="/">Club Virtual</Link>
+      <Link to="/">BookConnect</Link>
 
       <Nav className="account">
       <NavItem className={classLogin} onClick={(event) => this.handleClick(event)}>Login/SignUp</NavItem>

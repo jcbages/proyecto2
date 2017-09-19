@@ -16,14 +16,22 @@ const propTypes = {
 };
 
 class Chat extends React.Component {
+	constructor(props) {
+		super(props);
+
+		this.state = {
+			mensajes:this.props.messages
+		}
+	}
 	render() {
 		const { _id,nombre, desc, keywords, ids_admin, members, messages } = this.props;
 		const listClass = `list-item card`;
 		const style = { zIndex: 100 - this.props.index};
-		var mensajes = this.props.messages;
+		var mensajes = this.state.mensajes;
 		if(mensajes == undefined)
 			mensajes = [];
 		return (
+			<div class="container clearfix">
 			<div class="chat">
 			<div class="chat-header clearfix">
 			<div class="chat-about">
@@ -54,10 +62,13 @@ class Chat extends React.Component {
 		<button onClick={(event) => this.handleClick(event)}>Send</button>
 	</div> {/* end chat-message */}
 	</div>
+	</div>
+
 	);
 	}
 	handleClick(event){
-		var x = document.getElementById("message-to-send").value;
+		var elem = document.getElementById("message-to-send");
+		var x = elem.value;
 		var apiBaseUrl = "/clubs/"+this.props._id+"/messages";
 		var self = this;
 		console.log(x + "---" + apiBaseUrl);
@@ -69,7 +80,8 @@ class Chat extends React.Component {
 		.then(function (response) {
 			console.log(response)
 			if(response.status == 200){
-				self.props.messages = response;
+				elem.value="";
+				self.setState({mensajes:response.data});
 			}
 		})
 		.catch(function (error) {
