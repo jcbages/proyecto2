@@ -13,6 +13,7 @@ class App extends React.Component {
 		this.state={
 			mainPage:[],
 			loginPage:[],
+			userId:"",
 		}
 	}
 	componentWillMount(){
@@ -26,7 +27,7 @@ class App extends React.Component {
 	render() {
 			return (<div>
 			<Main/>
-				<Header appContext={this} />
+				<Header appContext={this} userId ={this.state.userId} />
 				{this.state.mainPage}
 				{this.state.loginPage}
 				</div>

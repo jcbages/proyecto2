@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from "prop-types";
-
+import Chat from "./Chat";
 
 const propTypes = {
   _id: PropTypes.string.isRequired,
@@ -22,7 +22,7 @@ class RobotMaster extends React.Component {
       var text = messages[0].text;
     }
     return (
-      <li id={_id} className={listClass} style={style}>
+      <li id={_id} href="#" onClick={(event) => this.handleClick(event)} className={listClass} style={style}>
         <span>
           <div className="robot-mug">
             <h1 className="robot-name">{nombre}</h1>                                   
@@ -44,6 +44,14 @@ class RobotMaster extends React.Component {
       </li>
     );
   }
+  handleClick(event){
+    var chat=[];
+    console.log(this.props);
+    chat.push(<Chat _id ={this.props._id} nombre={this.props.nombre} desc={this.props.desc} keywords = {this.props.keywords} ids_admin={this.props.ids_admin}
+      members = {this.props.members} messages={this.props.messages} userId = {this.props.userId}/>);
+    this.props.appContext.setState({mainPage:chat});
+  }
+
 }
 
 RobotMaster.PropTypes = propTypes;

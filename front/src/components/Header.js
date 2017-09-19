@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, Switch, Route } from 'react-router-dom';
 import { Navbar, Nav, NavItem, MenuItem, Dropdown, Glyphicon} from "react-bootstrap";
+import "./App.css";
 import { slide as Menu } from 'react-burger-menu';
 import LoginScreen from "../containers/LoginScreen";
 import Clubs from "./Clubs";
@@ -61,47 +62,40 @@ class Header extends React.Component {
     super(props);
   }
   render() {
-    var styleLogin={
-      display:"none"
+    var classLogin="none";
+    var classHome="none";
+    var main = this.props.appContext.state.mainPage[0];
+    if(main != null && (main.type.name =="Welcome" || main.type.name =="t")) {
+      classLogin="block";
+      classHome="none";
     }
-    if(this.props.appContext.state.mainPage[0] != null && this.props.appContext.state.mainPage[0].type.name =="Welcome"){
-      styleLogin={
-        display:"block"
-      }
+    else if(main == undefined){
+      classHome="none";
+      classLogin="none";
     }
-    var style={
-      display:"none"
-    }
-    if(this.props.appContext.state.mainPage[0]!= null){
-      if(this.props.appContext.state.mainPage[0].type.name == "Welcome"){
-        style = {
-          display:"none"
-        }
-      }
-      else {
-        style={
-          display:"block"
-        }
-      }
+    else{
+      classHome = "block";
+      classLogin = "none";
     }
     return (
       <Navbar>
-      <Navbar.Header style={style}>
-      <Navbar.Brand>
-      <Menu>
+      <Navbar.Header>
+      <Navbar.Brand >
+      <Menu >
       <a id="home" className="menu-item" href="#" onClick={(event) => this.handleClickHome(event)}>Home</a>
       <a href="#" onClick={(event) => this.handleClick2(event)}>Mis clubes de lectura</a>
       <a id="contact" className="menu-item" href="/contact">Contact</a>
       <a onClick={ this.showSettings } className="menu-item--small" href="">Settings</a>
       </Menu>
-      <Link to="/">Club Virtual</Link>
       </Navbar.Brand>
       </Navbar.Header>
+      <Link to="/">Club Virtual</Link>
+
       <Nav className="account">
-      <NavItem style={styleLogin} onClick={(event) => this.handleClick(event)}>Login/SignUp</NavItem>
+      <NavItem className={classLogin} onClick={(event) => this.handleClick(event)}>Login/SignUp</NavItem>
       <MenuItem divider />
       </Nav>
-      <div style = {style}>
+      <div className={classHome}>
       <Account></Account>
       </div>
       </Navbar>
@@ -114,7 +108,7 @@ class Header extends React.Component {
   }
   handleClick2(event){
     var clubs=[];
-    clubs.push(<Clubs appContext ={this.props.appContext} />);
+    clubs.push(<Clubs appContext ={this.props.appContext} userId = {this.props.userId}/>);
     this.props.appContext.setState({mainPage:clubs,loginPage:[]});
   }
   handleClickHome(event){

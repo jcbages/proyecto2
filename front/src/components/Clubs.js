@@ -16,6 +16,7 @@ class Clubs extends React.Component {
       this.state = {
         removedRobotMasters: [],
         robotMasters: [],
+        chat:[],
         view: 'list',
         order: 'asc',
         sortingMethod: 'chronological',
@@ -108,6 +109,8 @@ class Clubs extends React.Component {
         return (
           <RobotMaster
             key = {robot.id}
+            appContext = {this.props.appContext}
+            userId = {this.props.userId}
             view = {view}
             index= {i}
             clickHandler ={() => this.moveRobotMaster('robotMasters', 'removedRobotMasters', i)}

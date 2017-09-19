@@ -5,6 +5,8 @@ import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 import Login from './Login';
 import axios from 'axios';
+import HomePage from "./HomePage";
+
 
 
 class Register extends Component {
@@ -55,7 +57,29 @@ class Register extends Component {
       );
   }
   handleClick(event){
-    var apiBaseUrl = "http://localhost:3001/users/";
+    var apiBaseUrl = "/users/";
+    var self = this;
+    var payload={
+      "first_name": this.state.first_name,
+      "last_name":this.state.last_name,
+      "email":this.state.email,
+      "password":this.state.password
+    }
+    axios.post(apiBaseUrl+'/register', payload)
+    .then(function (response) {
+     console.log(response);
+     if(response.status == 200){
+       window.alert("Signup successfull");
+       var homePage=[];
+       homePage.push(<HomePage/>);
+       self.props.appContext.setState({loginPage:[],mainPage:homePage,userId:response.data.data._id});
+     }
+   })
+    .catch(function (error) {
+     console.log(error);
+   });
+  }
+  handleClick(event){
     console.log("values",this.state.first_name,this.state.last_name,this.state.email,this.state.password);
     //To be done:check for empty values before hitting submit
     var self = this;
@@ -65,24 +89,6 @@ class Register extends Component {
       "email":this.state.email,
       "password":this.state.password
     }
-    axios.post(apiBaseUrl, payload)
-    .then(function (response) {
-     console.log(response);
-     if(response.data.code == 200){
-      //  console.log("registration successfull");
-      var loginscreen=[];
-      loginscreen.push(<Login parentContext={this}/>);
-      var loginmessage = "Not Registered yet.Go to registration";
-      self.props.parentContext.setState({loginscreen:loginscreen,
-       loginmessage:loginmessage,
-       buttonLabel:"Register",
-       isLogin:true
-     });
-    }
-  })
-    .catch(function (error) {
-     console.log(error);
-   });
   }
 }
 const style = {

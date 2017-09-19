@@ -91,3 +91,13 @@ a.active {
 text-decoration: none;
 }
 
+.none{
+  display:none;
+}
+.block{
+  display:block;
+}
+
+.navbar-header + a{
+  font-size:28px;
+}
